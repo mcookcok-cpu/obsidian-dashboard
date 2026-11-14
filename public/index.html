@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vault Dashboard</title>
+<link rel="stylesheet" href="/style.css">
+</head><body>
+<header>
+  <button id="menu" title="Menu">☰</button>
+  <a class="brand" href="#/">Vault</a>
+  <input id="q" type="search" placeholder="Cari catatan…" autocomplete="off">
+  <button id="new" title="Catatan baru">＋</button>
+  <button id="logout" title="Keluar">Keluar</button>
+</header>
+<div id="layout"><nav id="side"></nav><main id="main"></main></div>
+<dialog id="dlg">
+  <h3>Catatan baru</h3>
+  <label>Lokasi file<input id="npath" value="Inbox/" autocomplete="off"></label>
+  <label>Template<select id="ntpl"><option value="">(kosong)</option></select></label>
+  <div id="nerr" class="err small"></div>
+  <div class="row"><button id="ncancel">Batal</button><button id="ncreate" class="pri">Buat</button></div>
+</dialog>
+<script src="/app.js"></script>
+</body></html>

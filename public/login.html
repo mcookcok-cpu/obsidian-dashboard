@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Masuk · Vault</title>
+<style>
+html,body{height:100%;margin:0;background:#0f1115;color:#e6e8ee;font:15px system-ui,-apple-system,sans-serif}
+body{display:flex;align-items:center;justify-content:center}
+form{width:min(340px,88vw);background:#161a22;border:1px solid #262b36;border-radius:14px;padding:22px}
+h1{margin:0 0 4px;font-size:20px;color:#9b8cff}
+p{margin:0 0 16px;color:#8a91a1;font-size:13px}
+input{width:100%;box-sizing:border-box;padding:11px 12px;border-radius:9px;border:1px solid #262b36;background:#0f1115;color:#e6e8ee;font-size:15px}
+button{width:100%;margin-top:12px;padding:11px;border:0;border-radius:9px;background:#9b8cff;color:#12101f;font-weight:600;font-size:15px}
+#e{color:#f87171;font-size:13px;min-height:18px;margin-top:10px}
+</style></head><body>
+<form id="f">
+<h1>Vault</h1><p>Masukkan token dashboard.</p>
+<input id="t" type="password" placeholder="Token" autocomplete="current-password" autofocus>
+<button>Masuk</button><div id="e"></div>
+</form>
+<script>
+document.getElementById('f').addEventListener('submit', async ev => {
+  ev.preventDefault();
+  const e = document.getElementById('e'); e.textContent = '';
+  try {
+    const r = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: document.getElementById('t').value }) });
+    if (r.ok) location.reload(); else e.textContent = (await r.json()).error || 'Gagal masuk';
+  } catch { e.textContent = 'Tidak bisa terhubung ke server'; }
+});
+</script></body></html>
